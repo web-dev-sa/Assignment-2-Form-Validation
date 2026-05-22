@@ -1,0 +1,104 @@
+.calendar {
+	font-family: 'Encode Sans Semi Expanded', 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+	font-size: 0.9em;
+	background-color: #1A0B3F;
+	color: #F6F6FA;
+	border: 1px solid #6E11E6;
+	border-radius: 8px;
+	padding: 0.4em;
+	width: 14em;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(199, 21, 133, 0.15);
+}
+
+.calendar .months {
+	background: linear-gradient(135deg, #4B0082, #6E11E6);
+	border: 1px solid #6E11E6;
+	border-radius: 6px;
+	color: #FFF;
+	padding: 0.3em;
+	text-align: center;
+	font-weight: 700;
+	letter-spacing: 0.3px;
+}
+
+.calendar .prev-month,
+.calendar .next-month {
+	padding: 0;
+}
+
+.calendar .prev-month {
+	float: left;
+}
+
+.calendar .next-month {
+	float: right;
+}
+
+.calendar .current-month {
+	margin: 0 auto;
+}
+
+.calendar .months .prev-month,
+.calendar .months .next-month {
+	color: #FFF;
+	text-decoration: none;
+	padding: 0 0.5em;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.calendar .months .prev-month:hover,
+.calendar .months .next-month:hover {
+	background-color: #C71585;
+	color: #FFF;
+}
+
+.calendar table {
+	border-collapse: separate;
+	border-spacing: 2px;
+	padding: 0;
+	font-size: 0.8em;
+	width: 100%;
+	margin-top: 0.3em;
+}
+
+.calendar th {
+	text-align: center;
+	color: #C71585;
+	font-weight: 700;
+	padding: 0.2em 0;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.calendar td {
+	text-align: right;
+	padding: 1px;
+	width: 14.3%;
+}
+
+.calendar td span {
+	display: block;
+	color: #F6F6FA;
+	background-color: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(110, 17, 230, 0.35);
+	border-radius: 4px;
+	text-decoration: none;
+	padding: 0.3em;
+	cursor: pointer;
+	transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.calendar td span:hover {
+	color: #FFF;
+	background-color: #6E11E6;
+	border: 1px solid #C71585;
+}
+
+.calendar td.today span {
+	background-color: #C71585;
+	border: 1px solid #F6F6FA;
+	color: #FFF;
+	font-weight: 700;
+}

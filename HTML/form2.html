@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Tip</title>
+    <link rel="stylesheet" href="../CSS/mystyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/datepickr.css">
+    <script src="../JS/formdata.js"></script>
+    <script type="text/javascript" src="../JS/datepickr.min.js"></script>
+</head>
+
+<body onload="retrievedata()">
+
+    <form name="contact" action="../PHP/FormToEmail.php" method="post">
+
+        <div class="progress-container">
+            <span class="progress-text">Progress:</span>
+            <div class="progress-bar">
+                <div class="progress" style="width:50%"></div>
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Enter Tip Details</legend>
+            <ol>
+                <li>
+                    <label for="datetime">Date/Time of Incident</label>
+                    <input type="text" id="datetime" name="datetime" placeholder="YYYY-MM-DD HH:MM">
+                </li>
+                <li>
+                    <label for="tipdetails">Tip Details</label>
+                    <textarea id="tipdetails" name="tipdetails" placeholder="Enter the details of the tip"
+                        rows="5"></textarea>
+                </li>
+                <li>
+                    <label for="supportfile">Attach Supporting File</label>
+                    <input type="file" id="supportfile" name="supportfile">
+                </li>
+                <li>
+                    <label for="rvalue">Urgency</label>
+                    <input id="rvalue" placeholder="10 is most urgent" readonly />
+                    <input type="range" name="range" id="range" min="1" max="10" />
+                </li>
+            </ol>
+        </fieldset>
+
+        <fieldset>
+            <legend>Communication Preferences</legend>
+            <ol>
+                <li class="checkbox-line">
+                    <label for="contact">May we contact you about this tip?</label>
+                    <input type="checkbox" id="contact" name="contact" value="yes">
+                </li>
+
+                <li>
+                    <label for="phone">Contact by Phone</label>
+                    <input type="radio" id="phone" name="contactmethod" value="phone">
+                </li>
+                <li>
+                    <label for="emailcontact">Contact by Email</label>
+                    <input type="radio" id="emailcontact" name="contactmethod" value="email">
+                </li>
+            </ol>
+        </fieldset>
+
+        <div class="staff-check">
+            <label for="staffoffice">Staff in the office</label>
+            <div class="staff-progress">
+                <div class="progress" style="width:60%;"></div>
+            </div>
+        </div>
+
+        <button type="submit">Continue</button>
+    </form>
+
+    <script src="../JS/myscripts.js"></script>
+    <script type="text/javascript">
+        var range;
+        var rvalue;
+        function init() {
+            range = document.getElementById("range");
+            rvalue = document.getElementById("rvalue");
+            rvalue.placeholder = "10 is most urgent";
+            range.onchange = update;
+            new datepickr('datetime', { 'dateFormat': 'd/m/Y' });
+        }
+
+        function update() {
+            rvalue.value = range.value;
+        }
+        window.onload = init;
+    </script>
+
+</body>
+
+</html>

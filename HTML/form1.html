@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New User</title>
+    <link rel="stylesheet" href="../CSS/mystyles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../JS/formdata.js"></script>
+    <script type="text/javascript" src="../JS/validate.js"></script>
+    <script type="text/javascript" src="../JS/myscripts.js"></script>
+</head>
+<body onload="retrievedata()">
+    
+<form id="Register_New_User" action="../HTML/form2.html" autocomplete="off">
+
+	<div class="progress-container">
+		<span class="progress-text">Progress:</span>
+		<div class="progress-bar">
+			<div class="progress" style="width:25%"></div>
+		</div>
+	</div>
+	
+	<fieldset>
+        <legend>Register New User</legend>
+        <ol>
+            <li>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" placeholder="Enter a new username" title="8 to 12 letters only" pattern="[a-zA-Z]{8,12}" onblur="return validateErrors('username','usernameError')" required autofocus>
+                <script>
+                    if (!("autofocus" in document.createElement("input"))) {
+                    document.getElementById("username").focus();
+                }
+                </script>
+                <span id="usernameError"></span>
+            </li>
+            <li>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Min 8, upper, lower and number" title="Min 8 characters, must include uppercase, lowercase and a number" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onblur="return validateErrors('password','passwordError')" required>
+                <span id="passwordError"></span>
+            </li>
+        </ol>
+    </fieldset>
+    <fieldset>
+        <legend>Personal Details</legend>
+        <ol>
+            <li>
+                <label for="fname">Name</label>
+                <input id="fname" name="fname" type="text" placeholder="John Smith" title="Up to 3 words, each starting with a capital letter. Allows apostrophes and hyphens e.g. O'Reilly" pattern="[A-Z][a-zA-Z'\-]{0,29}(\s[A-Z][a-zA-Z'\-]{0,29}){0,2}" onblur="return validateErrors('fname','fnameError')" required>
+                <span id="fnameError"></span>
+            </li>
+            <li>
+                <label for="address">Address</label>
+                <input id="address" name="address" type="text" placeholder="Unit 5 / 7 Example Street" title="Max 100 characters, allows numbers, slashes and hyphens e.g. Unit 5 / 7 Example St" pattern="[a-zA-Z0-9\s\/\#\-\.]{1,100}" onblur="return validateErrors('address','addressError')" required>
+                <span id="addressError"></span>
+            </li>
+            <li>
+                <label for="suburb">Suburb</label>
+                <input id="suburb" name="suburb" type="text" placeholder="Suburb" title="Max 50 letters, must start with a capital" pattern="[A-Z][a-zA-Z\s]{0,49}" onblur="return validateErrors('suburb','suburbError')" required>
+                <span id="suburbError"></span>
+            </li>
+            <li>
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" placeholder="City" title="Max 50 letters, must start with a capital. Allows hyphens e.g. Broken Hill" pattern="[A-Z][a-zA-Z\s\-]{0,49}" onblur="return validateErrors('city','cityError')" required>
+                <span id="cityError"></span>
+            </li>
+            <li>
+                <label for="country">Country</label>
+                <select id="country" name="country" onchange="changeState()">
+                    <option value="0">-- Select a Country --</option>
+                    <option value="AU">Australia</option>
+                    <option value="NZ">New Zealand</option>
+                </select>
+                <span id="countryError"></span>
+            </li>
+            <li>
+                <label for="state">State</label>
+                <select id="state" name="state" onchange="stateColours()">
+                    <option value="0">Select a State</option>
+
+                </select>
+                <span id="stateError"></span>
+            </li>
+            <li>
+                <label for="postcode">Postcode</label>
+                <input id="postcode" name="postcode" type="text" placeholder="0000" title="Exactly 4 digits" pattern="[0-9]{4}" onblur="validateErrors('postcode', 'postcodeError'); validatePostcode()" required>
+                <span id="postcodeError"></span>
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" placeholder="example@domain.com" title="Must be a valid email e.g. example@domain.com" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" onblur="return validateErrors('email','emailError')" required>
+                <span id="emailError"></span>
+            </li>
+            <li>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="text" placeholder="(04)-1234-5678" title="Format must be (##)-####-#### e.g. (04)-1234-5678" pattern="\(\d{2}\)-\d{4}-\d{4}" onblur="return validateErrors('phone','phoneError')" required>
+                <span id="phoneError"></span>
+            </li>
+            <li>
+                <label for="website">Website</label>
+                <input id="website" name="website" type="text" placeholder="http://www.example.com" title="Format must be http://www.example.com — only .com .net .org accepted" pattern="https?:\/\/www\.[a-zA-Z0-9\-]+\.(com|net|org)" onblur="return validateErrors('website','websiteError')" required>
+                <span id="websiteError"></span>
+            </li>
+            <li>
+                <label for="age">Age</label>
+                <input id="age" name="age" type="text" placeholder="25" title="1 to 3 digits only" pattern="\d{1,3}" onblur="return validateErrors('age','ageError')" required>
+                <span id="ageError"></span>
+            </li>
+        </ol>
+    </fieldset>
+	
+    <div class="spam-check">
+        <label for="colour">Pick the black colour</label>
+        <input id="colour" name="colour" type="color" value="#ff0000" onchange="validateSpamColour(this)">
+        <span id="colourError"></span>
+    </div>
+	
+    <button type="submit" onclick="return validate()">Continue</button>
+</form>
+
+</body>
+</html>
