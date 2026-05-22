@@ -12,18 +12,19 @@ function changeState() {
     state.options[state.options.length] = new Option("Queensland", "QLD");
     state.options[state.options.length] = new Option("Tasmania", "TAS");
     state.options[state.options.length] = new Option("Western Australia", "WA");
-    state.options[state.options.length] = new Option(
-      "Australian Capital Territory",
-      "ACT",
-    );
-    state.options[state.options.length] = new Option(
-      "Northern Territory",
-      "NT",
-    );
+    state.options[state.options.length] = new Option("Australian Capital Territory","ACT");
+    state.options[state.options.length] = new Option("Northern Territory", "NT");
   }
-  else if (country === "NZ") {
+
+  else if(country === 'NZ') {
     state.innerHTML = "";
-  }
+
+    state.options[state.options.length] = new Option("-- select region --","0");
+    state.options[state.options.length] = new Option('Auckland', 'AU');
+    state.options[state.options.length] = new Option('Nothland', 'NO');
+    state.options[state.options.length] = new Option('Southland', 'SO');
+}
+
   else {
     state.innerHTML = "";
     state.options[state.options.length] = new Option(
